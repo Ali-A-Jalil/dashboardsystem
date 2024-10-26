@@ -116,6 +116,14 @@ header button.rounded-circle svg:hover{
   transition: width 0.3s ease;
 }
 
+.sidebar.closed {
+  display: none;
+}
+
+.sidebar.open {
+  display: block;
+}
+
 .searchBox{
   width: 250px;
   height: 40px;

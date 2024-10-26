@@ -24,7 +24,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 
 
 
-const Header = ({ toggleSidebar }) => {
+const Header = ({ toggleSidebar, isSidebarOpen }) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const [isOpenMyNotification, setIsOpenMyNotification] = useState(false);
@@ -65,7 +65,7 @@ return (
 
                 <div className="menuPart col-sm-3  d-flex align-items-center pl-4">
                     <Button className='rounded-circle mr-3' onClick={toggleSidebar}>
-                        <MdOutlineMenuOpen />
+                        {isSidebarOpen ? <MdOutlineMenuOpen /> : <MdOutlineMenu /> } {/* تغيير الأيقونة بناءً على حالة isSidebarOpen */}
                     </Button>
 
                     <Search />

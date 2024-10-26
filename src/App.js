@@ -13,9 +13,9 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  return (
+  return ( 
     <BrowserRouter>
-    <Header toggleSidebar={toggleSidebar}/>
+    <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}/>
     <div className='main d-flex'>
       <div className='sidebarWrapper'>
         <Sidebar isSidebarOpen={isSidebarOpen}/>
