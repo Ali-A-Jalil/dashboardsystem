@@ -93,6 +93,29 @@ header button.rounded-circle svg:hover{
   color: #0858f7;
 }
 
+.sidebarWrapper {
+  transition: transform 0.3s ease;
+}
+
+.sidebarWrapper.closed {
+  transform: translateX(-100%); 
+}
+
+.sidebarWrapper.open {
+  transform: translateX(0); 
+}
+
+.sidebar.open {
+  width: 250px; 
+  transition: width 0.3s ease;
+}
+
+.sidebar.closed {
+  width: 0; 
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
 .searchBox{
   width: 250px;
   height: 40px;

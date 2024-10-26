@@ -16,19 +16,19 @@ import { HiDocumentReport } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { IoMdLogOut } from "react-icons/io";
 
-const Sidebar = () => {
+const Sidebar = ({ isSidebarOpen }) => {
 
   const [activeTab, setActiveTab] = useState(0);
-  const[isToggleSubmenu, setToggleSubmenu] = useState(false);
+  const [isToggleSubmenu, setToggleSubmenu] = useState(false);
+
   const isOpenSubmenu = (index) => {
     setActiveTab(index);
     setToggleSubmenu(!isToggleSubmenu);
-  }
-
+  };
 
   return (
     <>
-      <div className='sidebar'>
+      <div className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
         <ul>
           <li>
             <Link to='/' className='w-100'>
@@ -52,7 +52,7 @@ const Sidebar = () => {
                 <ul className='sub-menu'>
                   <li><Link to='/'>Product List</Link></li>
                   <li><Link to='/'>Product View</Link></li>
-                  <li><Link to='/'>Product Upload</Link></li>
+                  <li><Link to='/'>Create Product</Link></li>
                 </ul>
               </div>
             

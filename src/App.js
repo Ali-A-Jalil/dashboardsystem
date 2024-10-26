@@ -4,14 +4,21 @@ import './App.css';
 import Dashboard from './pages/Dashboard';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
-
+import { useState } from 'react'
 function App() {
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <BrowserRouter>
-    <Header/>
+    <Header toggleSidebar={toggleSidebar}/>
     <div className='main d-flex'>
       <div className='sidebarWrapper'>
-        <Sidebar/>
+        <Sidebar isSidebarOpen={isSidebarOpen}/>
       </div>
       <div className='content'>
         <Routes>

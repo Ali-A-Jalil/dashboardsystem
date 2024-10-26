@@ -24,7 +24,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 
 
 
-const Header = () => {
+const Header = ({ toggleSidebar }) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const [isOpenMyNotification, setIsOpenMyNotification] = useState(false);
@@ -32,10 +32,10 @@ const Header = () => {
     const openNatification = Boolean(isOpenMyNotification);
 
     const handleOpenMyAccDr = (event) => {
-      setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
     const handleCloseMyAccDr = () => {
-      setAnchorEl(null);
+        setAnchorEl(null);
     };
 
 
@@ -64,7 +64,10 @@ return (
 
 
                 <div className="menuPart col-sm-3  d-flex align-items-center pl-4">
-                    <Button className='rounded-circle mr-3'><MdOutlineMenuOpen /></Button>
+                    <Button className='rounded-circle mr-3' onClick={toggleSidebar}>
+                        <MdOutlineMenuOpen />
+                    </Button>
+
                     <Search />
                 </div>
 
@@ -303,7 +306,7 @@ return (
 
                             <div className="userInfo">
                                 <h4>Ali Abdeljalil</h4>
-                                <p className='mb-0'>@abdeljalil</p>
+                                <p className='mb-0'>@abdeljalil101</p>
                             </div>
                             
                         </Button>
