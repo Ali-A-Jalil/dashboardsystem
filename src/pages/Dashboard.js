@@ -9,17 +9,35 @@ import { GiExpense } from "react-icons/gi";
 import DashboardBoxRight from './components/DashboardBoxRight';
 import { PiHandDepositFill } from "react-icons/pi";
 import { FaMoneyBillWave } from "react-icons/fa";
+import  { useState, useEffect } from 'react';
+import DashboardChart from './components/DashboardChart';
 
 const Dashboard = () => {
+
+  const [time, setTime] = useState(new Date());
+  const [chartType, setChartType] = useState('bar');
+
+  useEffect(() => {
+    // تحديث الوقت كل ثانية للساعة
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const dailyData = [277, 1006, 15, 3614, 400, 800, 1000, 2214];
+  const monthlyData = [306, 3560, 5000, 850412, 3600, 300000, 180000, 590000];
+
   return (
     <>
 
         <div className='right-content w-100'>
 
-          <div className='date'>
-            <h3>{new Date().toDateString()}</h3>
-            <p>{new Date().toTimeString()}</p>
-          </div>
+            <div className='day'>
+              <h3>{time.toDateString()}</h3>
+              <p>{time.toLocaleTimeString()}</p>
+            </div>
 
           
             <div className='row dashboardBoxWrapperRow'>
@@ -49,7 +67,7 @@ const Dashboard = () => {
           {/* Monthly */}
 
 
-          <div className='month pt-5'>
+          <div className='month'>
             <h3>{new Date().toLocaleString('default', { month: 'long' })}</h3>
             <p>{new Date().toLocaleString('default', { year: 'numeric' })}</p>
           </div>
@@ -77,6 +95,17 @@ const Dashboard = () => {
             </div>
           </div>
 
+        </div>
+
+        {/* اختيار نوع الرسم البياني */}
+        <div className="chart-type-selector">
+          <button onClick={() => setChartType('bar')}>Bar Chart</button>
+          <button onClick={() => setChartType('line')}>Line Chart</button>
+        </div>
+
+        {/* رسم بياني للبيانات */}
+        <div className="chart-container">
+          <DashboardChart dailyData={dailyData} monthlyData={monthlyData} chartType={chartType} />
         </div>
     </>
   )
