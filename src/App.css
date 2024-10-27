@@ -804,4 +804,34 @@ header button.rounded-circle svg:hover{
   font-weight: 600;
   margin-bottom: 0 10px;
 }
- 
+
+.top-least-selling{
+  background: #ccc;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  overflow: hidden;
+  padding: 20px 25px;
+  margin: 20px 25px;
+}
+
+.top-least-selling h3{
+  font-size: 25px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.top-least-selling .top-selling h4{
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.top-least-selling .top-selling p{
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}

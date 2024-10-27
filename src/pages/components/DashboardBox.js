@@ -30,7 +30,7 @@ const DashboardBox = (props) => {
             </div>
 
 
-                <div className="text-white detils w-100">
+                <div className="text-white details w-100">
                     {
                         props.details ? props.details : ''
                     }
