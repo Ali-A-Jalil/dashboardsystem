@@ -1,8 +1,8 @@
 import React from 'react';
 import { Bar, Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend , ArcElement } from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
 const DashboardChart = ({ dailyData, monthlyData, chartType = 'bar' }) => {
   const data = {
@@ -37,7 +37,7 @@ const DashboardChart = ({ dailyData, monthlyData, chartType = 'bar' }) => {
       },
     },
     maintainAspectRatio: false,
-    backgroundColor: 'white', // خلفية الرسم البياني بيضاء
+    backgroundColor: 'white', // Set the background color here
   };
 
   return (
