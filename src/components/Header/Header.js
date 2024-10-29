@@ -24,7 +24,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 
 
 
-const Header = ({ toggleSidebar, isSidebarOpen }) => {
+const Header = ({ toggleSidebar, isSidebarOpen, user }) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const [isOpenMyNotification, setIsOpenMyNotification] = useState(false);
@@ -65,7 +65,7 @@ return (
 
                 <div className="menuPart col-sm-3  d-flex align-items-center pl-4">
                     <Button className='rounded-circle mr-3' onClick={toggleSidebar}>
-                        {isSidebarOpen ? <MdOutlineMenuOpen /> : <MdOutlineMenu /> } {/* تغيير الأيقونة بناءً على حالة isSidebarOpen */}
+                        {isSidebarOpen ? <MdOutlineMenuOpen /> : <MdOutlineMenu /> } {/* sidebar toggle button  */}
                     </Button>
 
                     <Search />
@@ -300,13 +300,13 @@ return (
                         <Button className="myAcc d-flex align-items-center" onClick={handleOpenMyAccDr }>
                             <div className="userImg">
                                 <span className='rounded-circle'>
-                                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="user" />
+                                    <img src={user?.img || 'default-image-url'} alt="user"/>
                                 </span>
                             </div>
 
                             <div className="userInfo">
-                                <h4>Ali Abdeljalil</h4>
-                                <p className='mb-0'>@abdeljalil101</p>
+                                <h4>{user?.username  || 'Guest' }</h4>
+                                <p className='mb-0'>{user?.nickname || ''}</p>
                             </div>
                             
                         </Button>

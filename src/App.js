@@ -1,37 +1,41 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { useState } from 'react';
 import Dashboard from './pages/Dashboard';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
-import { useState } from 'react'
+import Login from './components/Login/Login';
 
 function App() {
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+
+  const handleLogin = (user) => {
+    setLoggedInUser(user);
+    setIsLoggedIn(true);
   };
 
-  return ( 
+  return (
     <BrowserRouter>
-      <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}/>
+      {isLoggedIn && <Header user={loggedInUser} toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />}
       <div className='main d-flex'>
-        <div className='sidebarWrapper'>
-          <Sidebar isSidebarOpen={isSidebarOpen}/>
-        </div>
+        {isLoggedIn && (
+          <div className='sidebarWrapper'>
+            <Sidebar isSidebarOpen={isSidebarOpen} />
+          </div>
+        )}
         <div className='content'>
-
           <Routes>
-            <Route path='/' exact={true} element={<Dashboard/>} />
-            <Route path='/dashboard' exact={true} element={<Dashboard/>} />
+            <Route path="/" element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
+            <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />} />
           </Routes>
         </div>
       </div>
-
     </BrowserRouter>
-
   );
 }
 
