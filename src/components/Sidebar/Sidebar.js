@@ -14,8 +14,7 @@ import { HiDocumentReport } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import { IoMdLogOut } from "react-icons/io";
 import { FaCreditCard } from "react-icons/fa";
-import DashboardDaily from '../../pages/components/DashboardDaily';
-import DashboardMonthly from '../../pages/components/DashboardMonthly';
+
 
 
 

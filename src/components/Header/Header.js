@@ -6,12 +6,10 @@ import { MdOutlineMenu } from "react-icons/md";
 import { MdOutlineMenuOpen } from "react-icons/md";
 import Search from '../Search/Search';
 import { MdOutlineLightMode } from "react-icons/md";
-import { MdDarkMode } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import { IoCartOutline } from "react-icons/io5";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaRegBell } from "react-icons/fa6";
-
 import { useState } from 'react'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
