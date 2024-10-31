@@ -112,7 +112,7 @@ const Sidebar = ({ isSidebarOpen }) => {
                   <li><Link to='/'>Today Reminders</Link></li>
                   <li><Link to='/'>Old Reminders</Link></li>
                   <li><Link to='/'>Upcoming Reminders</Link></li>
-                  <li><Link to='/'>Overview Reminders</Link></li>
+                  <li><Link to='/'>Overdue Reminders</Link></li>
                 </ul>
             </div>
           </li>
@@ -141,8 +141,8 @@ const Sidebar = ({ isSidebarOpen }) => {
             <div className={`sub-menuWrapper ${activeTab===6 && 
                 isToggleSubmenu === true ? 'colapse' : 'colapsed'}`}>
                 <ul className='sub-menu'>
-                  <li><Link to='/'>Invoices List</Link></li>
-                  <li><Link to='/'>Create Invoice</Link></li>
+                  <li><Link to='/invoices-list'>Invoices List</Link></li>
+                  <li><Link to='/create-invoice'>Create Invoice</Link></li>
                 </ul>
             </div>
           </li>
@@ -157,6 +157,7 @@ const Sidebar = ({ isSidebarOpen }) => {
                 isToggleSubmenu === true ? 'colapse' : 'colapsed'}`}>
                 <ul className='sub-menu'>
                   <li><Link to='/'>Employee</Link></li>
+                  <li><Link to='/'>Create Employee</Link></li>
                   <li><Link to='/'>Employee Loan</Link></li>
                   <li><Link to='/'>Employee Payslip</Link></li>
                   <li><Link to='/'>Employee Salary</Link></li>

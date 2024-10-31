@@ -917,3 +917,265 @@ header button.rounded-circle svg:hover{
   font-size: 14px;
   text-align: center;
 }
+
+.change-password-container{
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #444;
+  /* border-radius: 10px; */
+  /* overflow: hidden; */
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); */
+}
+
+.change-password{
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  width: 50%;
+  height: 60%;
+  background: #ccc;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  overflow: hidden;
+  padding: 50px 50px;
+  margin: 100px auto;
+}
+
+.change-password h2{
+  font-size: 25px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.change-password input{
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
+
+.change-password button{
+  width: 100%;
+  padding: 5px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #0858f7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* General form styling */
+
+.invoice-form {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  max-height: 100vh; /* Set to the height of the viewport */
+  overflow-y: auto; /* Enable scroll only if content exceeds the height */
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.invoice-form label {
+  font-weight: bold;
+}
+
+.invoice-form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-btn {
+  grid-column: span 2;
+  align-self: center;
+  padding: 10px 20px;
+}
+
+.invoice-list {
+  width: 100%;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 70px;
+}
+
+.invoice-form div input{
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #444;
+} 
+
+.invoice-form button{
+  width: 100%;
+  padding: 5px;
+  font-size: 18px;
+  color: #000;
+  background-color: #ccc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.invoice-form button:hover{
+  background-color: #0858f7;
+  color: #fff;
+}
+
+.invoice-table th, .invoice-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+
+.table-header th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.table-body tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-body tr:hover {
+  background-color: #e6f7ff;
+}
+
+
+.action-btn{
+  padding: 5px 10px;
+}
+
+.action-menu {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.action-menu button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.action-menu button:hover {
+  background-color: #0056b3;
+}
+
+
+.invoice-print {
+  width: 80%;
+  margin: 100px 250px;
+  padding: 50px 100px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.invoice-print h2{
+  text-align: start !important;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #444;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.invoice-print .invoice-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.invoice-print .invoice-logo img {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.invoice-print h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.invoice-print h2 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #444;
+}
+
+.invoice-print p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.invoice-print strong {
+  display: inline-block;
+  width: 150px;
+}
+
+.invoice-print button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.invoice-print button:hover {
+  background-color: #45a049;
+}
+
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* z-index: 1000; */
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
+}
