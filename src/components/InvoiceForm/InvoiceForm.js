@@ -80,7 +80,7 @@ const InvoiceForm = ({ addInvoice }) => {
             </div>
             <div className="phoneNumber">
                 <label>Phone Number:</label>
-                <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+                <input type="number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
             </div>
             <div className="address">
                 <label>Address:</label>

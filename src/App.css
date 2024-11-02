@@ -1064,7 +1064,7 @@ header button.rounded-circle svg:hover{
 }
 
 .action-menu {
-  display: flex;
+  /* display: flex; */
   gap: 5px;
   margin-top: 5px;
 }
@@ -1077,6 +1077,8 @@ header button.rounded-circle svg:hover{
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.9em;
+  transition: background-color 0.3s;
+  margin-bottom: 5px;
 }
 
 .action-menu button:hover {

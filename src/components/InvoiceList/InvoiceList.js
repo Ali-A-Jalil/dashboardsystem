@@ -66,14 +66,14 @@ const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
                             <td>
                                 <button className="action-btn" onClick={() => toggleActionMenu(invoice.id)}>Action</button>
                                 {actionInvoice === invoice.id && (
-                                    <div className="action-menu">
+                                    <ul className="action-menu">
                                         <button onClick={() => handleEdit(invoice)}>Edit</button>
                                         <button onClick={() => handleDelete(invoice.id)}>Delete</button>
                                         <button onClick={() => handlePrint(invoice)}>Print</button>
                                         {invoice.remainingBalance > 0 && (
                                             <button onClick={() => openPaymentModal(invoice)}>Rest of Payment</button>
                                         )}
-                                    </div>
+                                    </ul>
                                 )}
                             </td>
                         </tr>
@@ -81,7 +81,7 @@ const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
                 </tbody>
             </table>
 
-            {showPaymentModal && (
+            {showPaymentModal &&  (
             <>
             <div className="modal-overlay" onClick={() => setShowPaymentModal(false)}></div>
             <div className="modal ">
