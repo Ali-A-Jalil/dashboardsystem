@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as tf from '@tensorflow/tfjs';
-import { Table, Spinner } from 'react-bootstrap';
-import { Doughnut } from 'react-chartjs-2';
+import { Table, Spinner, ButtonGroup, Button } from 'react-bootstrap';
+import { Doughnut, Bar, Line } from 'react-chartjs-2';
 
 const ForecastTable = () => {
   const categories = [
@@ -17,12 +17,13 @@ const ForecastTable = () => {
 
   const [forecastData, setForecastData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [chartType, setChartType] = useState('Doughnut'); // State to manage chart type
 
   useEffect(() => {
     async function generateForecasts() {
       const forecasts = {};
       for (let category of categories) {
-        if (category.data.length < 2) continue; // تأكد من أن البيانات كافية
+        if (category.data.length < 2) continue;
 
         const xs = tf.tensor2d(category.data.slice(0, -1), [category.data.length - 1, 1]);
         const ys = tf.tensor2d(category.data.slice(1), [category.data.length - 1, 1]);
@@ -69,9 +70,32 @@ const ForecastTable = () => {
     ],
   });
 
+  const renderChart = (label) => {
+    const data = getChartData(label);
+    switch (chartType) {
+      case 'Bar':
+        return <Bar data={data} />;
+      case 'Line':
+        return <Line data={data} />;
+      default:
+        return <Doughnut data={data} />;
+    }
+  };
+
   return (
     <div className="forecast-table">
       <h3>Forecasts</h3>
+      <ButtonGroup aria-label="Chart Type Selection">
+        <Button variant="outline-primary" onClick={() => setChartType('Doughnut')}>
+          Doughnut
+        </Button>
+        <Button variant="outline-primary" onClick={() => setChartType('Bar')}>
+          Bar
+        </Button>
+        <Button variant="outline-primary" onClick={() => setChartType('Line')}>
+          Line
+        </Button>
+      </ButtonGroup>
       {loading ? (
         <Spinner animation="border" />
       ) : (
@@ -92,9 +116,7 @@ const ForecastTable = () => {
                 <td>{forecastData[category.label]?.daily.toFixed(2)}</td>
                 <td>{forecastData[category.label]?.monthly.toFixed(2)}</td>
                 <td>{forecastData[category.label]?.yearly.toFixed(2)}</td>
-                <td>
-                  <Doughnut data={getChartData(category.label)} />
-                </td>
+                <td>{renderChart(category.label)}</td>
               </tr>
             ))}
           </tbody>

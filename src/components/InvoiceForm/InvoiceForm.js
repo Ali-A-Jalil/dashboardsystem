@@ -1,137 +1,206 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const products = {
-    "Product A": 100,
-    "Product B": 150,
-    "Product C": 200,
-};
+// بيانات المنتجات الوهمية
+const mockProducts = [
+  { id: 1, name: 'Product A', price: 100 },
+  { id: 2, name: 'Product B', price: 150 },
+  { id: 3, name: 'Product C', price: 200 },
+];
 
-const InvoiceForm = ({ addInvoice }) => {
-    const [customerName, setCustomerName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [address, setAddress] = useState('');
-    const [productName, setProductName] = useState('');
-    const [quantity, setQuantity] = useState(1);
-    const [price, setPrice] = useState(0);
-    const [deliveryFee, setDeliveryFee] = useState(0);
-    const [amountPaid, setAmountPaid] = useState(0);
-    const [remainingBalance, setRemainingBalance] = useState(0);
-    const [notes, setNotes] = useState('');
-    const [followUpDate, setFollowUpDate] = useState('');
-    const [discount, setDiscount] = useState(0);
+const InvoiceForm = ({
+  products = mockProducts, // استخدام المنتجات الوهمية كقيمة افتراضية
+  addInvoice,
+  editInvoice,
+  invoiceToEdit = null,
+  onCancel,
+}) => {
+  const [customerName, setCustomerName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
+  const [productName, setProductName] = useState('');
+  const [quantity, setQuantity] = useState(1);
+  const [price, setPrice] = useState(0);
+  const [deliveryFee, setDeliveryFee] = useState(0);
+  const [amountPaid, setAmountPaid] = useState(0);
+  const [remainingBalance, setRemainingBalance] = useState(0);
+  const [notes, setNotes] = useState('');
+  const [followUpDate, setFollowUpDate] = useState('');
+  const [discount, setDiscount] = useState(0);
 
-    const handleProductChange = (e) => {
-        const selectedProduct = e.target.value;
-        setProductName(selectedProduct);
-        setPrice(products[selectedProduct] || 0);
+  // **ملء الحقول عند تعديل الفاتورة**
+  useEffect(() => {
+    if (invoiceToEdit) {
+      setCustomerName(invoiceToEdit.customerName || '');
+      setPhoneNumber(invoiceToEdit.phoneNumber || '');
+      setAddress(invoiceToEdit.address || '');
+      setProductName(invoiceToEdit.productName || '');
+      setQuantity(invoiceToEdit.quantity || 1);
+      setPrice(invoiceToEdit.price || 0);
+      setDeliveryFee(invoiceToEdit.deliveryFee || 0);
+      setAmountPaid(invoiceToEdit.amountPaid || 0);
+      setRemainingBalance(invoiceToEdit.remainingBalance || 0);
+      setNotes(invoiceToEdit.notes || '');
+      setFollowUpDate(invoiceToEdit.followUpDate || '');
+      setDiscount(invoiceToEdit.discount || 0);
+    }
+  }, [invoiceToEdit]);
+
+  // **تحديث السعر عند اختيار المنتج**
+  const handleProductChange = (e) => {
+    const selectedProduct = products.find((product) => product.name === e.target.value);
+    setProductName(selectedProduct?.name || '');
+    setPrice(selectedProduct?.price || 0);
+  };
+
+  // **حساب الرصيد المتبقي**
+  const handleAmountChange = (e) => {
+    const amount = parseFloat(e.target.value || 0);
+    setAmountPaid(amount);
+    const total = quantity * price + parseFloat(deliveryFee || 0) - parseFloat(discount || 0);
+    setRemainingBalance(total - amount);
+  };
+
+  // **إضافة/تحديث الفاتورة**
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const tax = (0.14 * quantity * price).toFixed(2);
+    const totalAmount = (
+      quantity * price +
+      parseFloat(tax) +
+      parseFloat(deliveryFee || 0) - 
+      parseFloat(discount || 0)
+    ).toFixed(2);
+
+    const invoice = {
+      id: invoiceToEdit ? invoiceToEdit.id : Date.now(),
+      customerName,
+      phoneNumber,
+      address,
+      productName,
+      quantity,
+      price,
+      tax,
+      deliveryFee,
+      totalAmount,
+      amountPaid,
+      remainingBalance,
+      discount,
+      notes,
+      createdAt: invoiceToEdit ? invoiceToEdit.createdAt : new Date().toLocaleString(),
+      followUpDate,
     };
 
-    const handleAmountChange = (e) => {
-        const amount = parseFloat(e.target.value);
-        setAmountPaid(amount);
-        setRemainingBalance((quantity * price + parseFloat(deliveryFee)) - amount);
-    };
+    if (invoiceToEdit) {
+      editInvoice(invoice);
+    } else {
+      addInvoice(invoice);
+    }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const tax = (0.14 * quantity * price).toFixed(2);
-        const totalAmount = (quantity * price + parseFloat(tax) + parseFloat(deliveryFee)).toFixed(2);
+    alert(`Invoice ${invoiceToEdit ? 'updated' : 'added'} successfully!`);
+    resetForm();
+  };
 
-        const invoice = {
-            id: Date.now(),
-            customerName,
-            phoneNumber,
-            address,
-            productName,
-            quantity,
-            price,
-            tax,
-            deliveryFee,
-            totalAmount,
-            amountPaid,
-            remainingBalance,
-            discount,
-            notes,
-            createdAt: new Date().toLocaleString(),
-            followUpDate,
-        };
-        addInvoice(invoice);
+  // **إعادة ضبط الحقول**
+  const resetForm = () => {
+    setCustomerName('');
+    setPhoneNumber('');
+    setAddress('');
+    setProductName('');
+    setQuantity(1);
+    setPrice(0);
+    setDeliveryFee(0);
+    setAmountPaid(0);
+    setRemainingBalance(0);
+    setDiscount(0);
+    setNotes('');
+    setFollowUpDate('');
+  };
 
-        // Reset the form
-        setCustomerName('');
-        setPhoneNumber('');
-        setAddress('');
-        setProductName('');
-        setQuantity(1);
-        setPrice(0);
-        setDeliveryFee(0);
-        setAmountPaid(0);
-        setRemainingBalance(0);
-        setDiscount(0);
-        setNotes('');
-        setFollowUpDate('');
-    };
-
-    return (
-        <form className="invoice-form" onSubmit={handleSubmit}>
-            <div className="customerName">
-                <label>Customer Name:</label>
-                <input type="text" value={customerName} onChange={(e) => setCustomerName(e.target.value)} required />
-            </div>
-            <div className="phoneNumber">
-                <label>Phone Number:</label>
-                <input type="number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
-            </div>
-            <div className="address">
-                <label>Address:</label>
-                <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required />
-            </div>
-            <div className="productName">
-                <label>Product Name:</label>
-                <select value={productName} onChange={handleProductChange} required>
-                    <option value="">Select Product</option>
-                    {Object.keys(products).map((product) => (
-                        <option key={product} value={product}>
-                            {product}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <div className="quantity">
-                <label>Units:</label>
-                <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} min="1" required />
-            </div>
-            <div className="price">
-                <label>Price per unit:</label>
-                <input type="number" value={price} disabled />
-            </div>
-            <div className="deliveryFee">
-                <label>Delivery Fees:</label>
-                <input type="number" value={deliveryFee} onChange={(e) => setDeliveryFee(e.target.value)} min="0" />
-            </div>
-            <div className="amountPaid">
-                <label>Amount Paid:</label>
-                <input type="number" value={amountPaid} onChange={handleAmountChange} min="0" />
-            </div>
-            <div className="remainingBalance">
-                <label>Remaining Balance:</label>
-                <input type="number" value={remainingBalance} disabled />
-            </div>
-            <div className="remainingBalance">
-                <label>Discount:</label>
-                <input type="number" value={discount} onChange={(e) => setDiscount(e.target.value)} min="0" />
-            </div>
-            <div className="followUpDate">
-                <label>Time And Date For Reminder:</label>
-                <input type="date" value={followUpDate} onChange={(e) => setFollowUpDate(e.target.value)} />
-            </div>
-            <div className="notes">
-                <label>Notes:</label>
-                <textarea value={notes} onChange={(e) => setNotes(e.target.value)} />
-            </div>
-            <button className="add-btn" type="submit">Add Invoice</button>
-        </form>
-    );
+  return (
+    <form className="invoice-form" onSubmit={handleSubmit}>
+      <h2>{invoiceToEdit ? 'Edit Invoice' : 'Add Invoice'}</h2>
+      <div className="form-group">
+        <label>Customer Name:</label>
+        <input
+          type="text"
+          value={customerName}
+          onChange={(e) => setCustomerName(e.target.value)}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Phone Number:</label>
+        <input
+          type="tel"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Address:</label>
+        <input
+          type="text"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Product Name:</label>
+        <select value={productName} onChange={handleProductChange} required>
+          <option value="">Select Product</option>
+          {products.map((product) => (
+            <option key={product.id} value={product.name}>
+              {product.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="form-group">
+        <label>Units:</label>
+        <input
+          type="number"
+          value={quantity}
+          onChange={(e) => setQuantity(parseInt(e.target.value || 1))}
+          min="1"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Price per unit:</label>
+        <input type="number" value={price} disabled />
+      </div>
+      <div className="form-group">
+        <label>Delivery Fees:</label>
+        <input
+          type="number"
+          value={deliveryFee}
+          onChange={(e) => setDeliveryFee(parseFloat(e.target.value || 0))}
+          min="0"
+        />
+      </div>
+      <div className="form-group">
+        <label>Amount Paid:</label>
+        <input
+          type="number"
+          value={amountPaid}
+          onChange={handleAmountChange}
+          min="0"
+        />
+      </div>
+      <button type="submit" className="btn btn-primary">
+        {invoiceToEdit ? 'Update Invoice' : 'Add Invoice'}
+      </button>
+      <button
+        type="button"
+        className="btn btn-secondary"
+        onClick={onCancel || resetForm}
+      >
+        Cancel
+      </button>
+    </form>
+  );
 };
 
 export default InvoiceForm;

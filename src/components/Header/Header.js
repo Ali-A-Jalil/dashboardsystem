@@ -86,213 +86,213 @@
 
 //                     <div className='myNotificationWrapper position-relative'>
 //                         <Button className='rounded-circle mr-3' onClick={handleOpenMyNotification}><FaRegBell /></Button>
-//                         <Menu
-//                                             anchorEl={isOpenMyNotification}
-//                                             className='myNotification dropdown-list'
-//                                             id="notification-menu"
-//                                             open={openNatification}
-//                                             onClose={handleCloseMyNotification}
-//                                             onClick={handleCloseMyNotification}
-//                                             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-//                                             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-//                         >
-//                                             <div className='head pl-3 pb-0'>
-//                                                 <h4>Order (12)</h4>
-//                                             </div>
-//                                             <Divider className='mb-1' />
+                        // <Menu
+                        //                     anchorEl={isOpenMyNotification}
+                        //                     className='myNotification dropdown-list'
+                        //                     id="notification-menu"
+                        //                     open={openNatification}
+                        //                     onClose={handleCloseMyNotification}
+                        //                     onClick={handleCloseMyNotification}
+                        //                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                        //                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                        // >
+                        //                     <div className='head pl-3 pb-0'>
+                        //                         <h4>Order (12)</h4>
+                        //                     </div>
+                        //                     <Divider className='mb-1' />
 
-//                                             <div className='Scroll'>
-//                                                 <MenuItem onClick={handleCloseMyNotification}>
-//                                                     <div className="d-flex ">
+                        //                     <div className='Scroll'>
+                        //                         <MenuItem onClick={handleCloseMyNotification}>
+                        //                             <div className="d-flex ">
 
-//                                                         <div>
-//                                                             <div className="userImg">
-//                                                                 <span className='rounded-circle'>
-//                                                                     <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="user" />
-//                                                                 </span>
-//                                                             </div>
-//                                                         </div>
+                        //                                 <div>
+                        //                                     <div className="userImg">
+                        //                                         <span className='rounded-circle'>
+                        //                                             <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="user" />
+                        //                                         </span>
+                        //                                     </div>
+                        //                                 </div>
 
-//                                                         <div className="userInfo">
-//                                                             <h4>
-//                                                                 <span>
-//                                                                     <b>Mahmudul </b>
-//                                                                     added to his favorite list
-//                                                                     <b> Leather belt steve madden</b>
-//                                                                 </span>
-//                                                             </h4>
-//                                                             <p className='text-sky mb-0'>few seconds ago</p>
-//                                                         </div>
-//                                                         <div className='dotList d-flex'>
-//                                                             <HiOutlineDotsVertical />
-//                                                         </div>
-//                                                     </div>
+                        //                                 <div className="userInfo">
+                        //                                     <h4>
+                        //                                         <span>
+                        //                                             <b>Mahmudul </b>
+                        //                                             added to his favorite list
+                        //                                             <b> Leather belt steve madden</b>
+                        //                                         </span>
+                        //                                     </h4>
+                        //                                     <p className='text-sky mb-0'>few seconds ago</p>
+                        //                                 </div>
+                        //                                 <div className='dotList d-flex'>
+                        //                                     <HiOutlineDotsVertical />
+                        //                                 </div>
+                        //                             </div>
                                                 
-//                                                 </MenuItem>
+                        //                         </MenuItem>
 
-//                                                 <MenuItem onClick={handleCloseMyNotification}>
-//                                                     <div className="d-flex ">
+                        //                         <MenuItem onClick={handleCloseMyNotification}>
+                        //                             <div className="d-flex ">
 
-//                                                         <div>
-//                                                             <div className="userImg">
-//                                                                 <span className='rounded-circle'>
-//                                                                     <img src="	https://mironcoder-hotash.netlify.app/images/avatar/01.webp" alt="user" />
-//                                                                 </span>
-//                                                             </div>
-//                                                         </div>
+                        //                                 <div>
+                        //                                     <div className="userImg">
+                        //                                         <span className='rounded-circle'>
+                        //                                             <img src="	https://mironcoder-hotash.netlify.app/images/avatar/01.webp" alt="user" />
+                        //                                         </span>
+                        //                                     </div>
+                        //                                 </div>
 
-//                                                         <div className="userInfo">
-//                                                             <h4>
-//                                                                 <span>
-//                                                                     <b>Mahmudul </b>
-//                                                                     added to his favorite list
-//                                                                     <b> Leather belt steve madden</b>
-//                                                                 </span>
-//                                                             </h4>
-//                                                             <p className='text-sky mb-0'>few seconds ago</p>
-//                                                         </div>
+                        //                                 <div className="userInfo">
+                        //                                     <h4>
+                        //                                         <span>
+                        //                                             <b>Mahmudul </b>
+                        //                                             added to his favorite list
+                        //                                             <b> Leather belt steve madden</b>
+                        //                                         </span>
+                        //                                     </h4>
+                        //                                     <p className='text-sky mb-0'>few seconds ago</p>
+                        //                                 </div>
 
-//                                                     </div>
+                        //                             </div>
                                                 
-//                                                 </MenuItem>
+                        //                         </MenuItem>
 
-//                                                 <MenuItem onClick={handleCloseMyNotification}>
-//                                                     <div className="d-flex ">
+                        //                         <MenuItem onClick={handleCloseMyNotification}>
+                        //                             <div className="d-flex ">
 
-//                                                         <div>
-//                                                             <div className="userImg">
-//                                                                 <span className='rounded-circle'>
-//                                                                     <img src="https://plus.unsplash.com/premium_photo-1729017566977-c1670d157362?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0Nnx8fGVufDB8fHx8fA%3D%3D" alt="user" />
-//                                                                 </span>
-//                                                             </div>
-//                                                         </div>
+                        //                                 <div>
+                        //                                     <div className="userImg">
+                        //                                         <span className='rounded-circle'>
+                        //                                             <img src="https://plus.unsplash.com/premium_photo-1729017566977-c1670d157362?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0Nnx8fGVufDB8fHx8fA%3D%3D" alt="user" />
+                        //                                         </span>
+                        //                                     </div>
+                        //                                 </div>
 
-//                                                         <div className="userInfo">
-//                                                             <h4>
-//                                                                 <span>
-//                                                                     <b>Mahmudul </b>
-//                                                                     added to his favorite list
-//                                                                     <b> Leather belt steve madden</b>
-//                                                                 </span>
-//                                                             </h4>
-//                                                             <p className='text-sky mb-0'>few seconds ago</p>
-//                                                         </div>
+                        //                                 <div className="userInfo">
+                        //                                     <h4>
+                        //                                         <span>
+                        //                                             <b>Mahmudul </b>
+                        //                                             added to his favorite list
+                        //                                             <b> Leather belt steve madden</b>
+                        //                                         </span>
+                        //                                     </h4>
+                        //                                     <p className='text-sky mb-0'>few seconds ago</p>
+                        //                                 </div>
 
-//                                                     </div>
+                        //                             </div>
                                                 
-//                                                 </MenuItem>
+                        //                         </MenuItem>
 
-//                                                 <MenuItem onClick={handleCloseMyNotification}>
-//                                                     <div className="d-flex ">
+                        //                         <MenuItem onClick={handleCloseMyNotification}>
+                        //                             <div className="d-flex ">
 
-//                                                         <div>
-//                                                             <div className="userImg">
-//                                                                 <span className='rounded-circle'>
-//                                                                     <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8QXZhdGFyfGVufDB8fDB8fHww" alt="user" />
-//                                                                 </span>
-//                                                             </div>
-//                                                         </div>
+                        //                                 <div>
+                        //                                     <div className="userImg">
+                        //                                         <span className='rounded-circle'>
+                        //                                             <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8QXZhdGFyfGVufDB8fDB8fHww" alt="user" />
+                        //                                         </span>
+                        //                                     </div>
+                        //                                 </div>
 
-//                                                         <div className="userInfo">
-//                                                             <h4>
-//                                                                 <span>
-//                                                                     <b>Mahmudul </b>
-//                                                                     added to his favorite list
-//                                                                     <b> Leather belt steve madden</b>
-//                                                                 </span>
-//                                                             </h4>
-//                                                             <p className='text-sky mb-0'>few seconds ago</p>
-//                                                         </div>
+                        //                                 <div className="userInfo">
+                        //                                     <h4>
+                        //                                         <span>
+                        //                                             <b>Mahmudul </b>
+                        //                                             added to his favorite list
+                        //                                             <b> Leather belt steve madden</b>
+                        //                                         </span>
+                        //                                     </h4>
+                        //                                     <p className='text-sky mb-0'>few seconds ago</p>
+                        //                                 </div>
 
-//                                                     </div>
+                        //                             </div>
                                                 
-//                                                 </MenuItem>
+                        //                         </MenuItem>
 
-//                                                 <MenuItem onClick={handleCloseMyNotification}>
-//                                                     <div className="d-flex ">
+                        //                         <MenuItem onClick={handleCloseMyNotification}>
+                        //                             <div className="d-flex ">
 
-//                                                         <div>
-//                                                             <div className="userImg">
-//                                                                 <span className='rounded-circle'>
-//                                                                     <img src="https://plus.unsplash.com/premium_photo-1658527049634-15142565537a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QXZhdGFyfGVufDB8fDB8fHww" alt="user" />
-//                                                                 </span>
-//                                                             </div>
-//                                                         </div>
+                        //                                 <div>
+                        //                                     <div className="userImg">
+                        //                                         <span className='rounded-circle'>
+                        //                                             <img src="https://plus.unsplash.com/premium_photo-1658527049634-15142565537a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QXZhdGFyfGVufDB8fDB8fHww" alt="user" />
+                        //                                         </span>
+                        //                                     </div>
+                        //                                 </div>
 
-//                                                         <div className="userInfo">
-//                                                             <h4>
-//                                                                 <span>
-//                                                                     <b>Mahmudul </b>
-//                                                                     added to his favorite list
-//                                                                     <b> Leather belt steve madden</b>
-//                                                                 </span>
-//                                                             </h4>
-//                                                             <p className='text-sky mb-0'>few seconds ago</p>
-//                                                         </div>
+                        //                                 <div className="userInfo">
+                        //                                     <h4>
+                        //                                         <span>
+                        //                                             <b>Mahmudul </b>
+                        //                                             added to his favorite list
+                        //                                             <b> Leather belt steve madden</b>
+                        //                                         </span>
+                        //                                     </h4>
+                        //                                     <p className='text-sky mb-0'>few seconds ago</p>
+                        //                                 </div>
 
-//                                                     </div>
+                        //                             </div>
                                                 
-//                                                 </MenuItem>
+                        //                         </MenuItem>
 
-//                                                 <MenuItem onClick={handleCloseMyNotification}>
-//                                                     <div className="d-flex ">
+                        //                         <MenuItem onClick={handleCloseMyNotification}>
+                        //                             <div className="d-flex ">
 
-//                                                         <div>
-//                                                             <div className="userImg">
-//                                                                 <span className='rounded-circle'>
-//                                                                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8QXZhdGFyfGVufDB8fDB8fHww" alt="user" />
-//                                                                 </span>
-//                                                             </div>
-//                                                         </div>
+                        //                                 <div>
+                        //                                     <div className="userImg">
+                        //                                         <span className='rounded-circle'>
+                        //                                             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8QXZhdGFyfGVufDB8fDB8fHww" alt="user" />
+                        //                                         </span>
+                        //                                     </div>
+                        //                                 </div>
 
-//                                                         <div className="userInfo">
-//                                                             <h4>
-//                                                                 <span>
-//                                                                     <b>Mahmudul </b>
-//                                                                     added to his favorite list
-//                                                                     <b> Leather belt steve madden</b>
-//                                                                 </span>
-//                                                             </h4>
-//                                                             <p className='text-sky mb-0'>few seconds ago</p>
-//                                                         </div>
+                        //                                 <div className="userInfo">
+                        //                                     <h4>
+                        //                                         <span>
+                        //                                             <b>Mahmudul </b>
+                        //                                             added to his favorite list
+                        //                                             <b> Leather belt steve madden</b>
+                        //                                         </span>
+                        //                                     </h4>
+                        //                                     <p className='text-sky mb-0'>few seconds ago</p>
+                        //                                 </div>
 
-//                                                     </div>
+                        //                             </div>
                                                 
-//                                                 </MenuItem>
+                        //                         </MenuItem>
 
-//                                                 <MenuItem onClick={handleCloseMyNotification}>
-//                                                     <div className="d-flex ">
+                        //                         <MenuItem onClick={handleCloseMyNotification}>
+                        //                             <div className="d-flex ">
 
-//                                                         <div>
-//                                                             <div className="userImg">
-//                                                                 <span className='rounded-circle'>
-//                                                                     <img src="https://plus.unsplash.com/premium_photo-1670884441012-c5cf195c062a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fEF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D" alt="user" />
-//                                                                 </span>
-//                                                             </div>
-//                                                         </div>
+                        //                                 <div>
+                        //                                     <div className="userImg">
+                        //                                         <span className='rounded-circle'>
+                        //                                             <img src="https://plus.unsplash.com/premium_photo-1670884441012-c5cf195c062a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fEF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D" alt="user" />
+                        //                                         </span>
+                        //                                     </div>
+                        //                                 </div>
 
-//                                                         <div className="userInfo">
-//                                                             <h4>
-//                                                                 <span>
-//                                                                     <b>Mahmudul </b>
-//                                                                     added to his favorite list
-//                                                                     <b> Leather belt steve madden</b>
-//                                                                 </span>
-//                                                             </h4>
-//                                                             <p className='text-sky mb-0'>few seconds ago</p>
-//                                                         </div>
+                        //                                 <div className="userInfo">
+                        //                                     <h4>
+                        //                                         <span>
+                        //                                             <b>Mahmudul </b>
+                        //                                             added to his favorite list
+                        //                                             <b> Leather belt steve madden</b>
+                        //                                         </span>
+                        //                                     </h4>
+                        //                                     <p className='text-sky mb-0'>few seconds ago</p>
+                        //                                 </div>
 
-//                                                     </div>
+                        //                             </div>
                                                 
-//                                                 </MenuItem>
-//                                             </div>
+                        //                         </MenuItem>
+                        //                     </div>
 
-//                                             <div className='pl-3 pr-3 w-100 pt-2 pb-1'>
-//                                                 <Button className='btn-blue w-100' >View All Notifications</Button>
-//                                             </div>
+                        //                     <div className='pl-3 pr-3 w-100 pt-2 pb-1'>
+                        //                         <Button className='btn-blue w-100' >View All Notifications</Button>
+                        //                     </div>
 
 
-//                         </Menu>
+                        // </Menu>
 //                     </div>
 
 
@@ -367,6 +367,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Logout from '@mui/icons-material/Logout';
 import { FaShieldHalved } from "react-icons/fa6";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Divider } from '@mui/material';
 import Search from '../Search/Search';
 
@@ -422,18 +423,230 @@ const Header = ({ toggleSidebar, isSidebarOpen, user, onLogout }) => {
                         <div className='myNotificationWrapper position-relative'>
                             <Button className='rounded-circle mr-3' onClick={handleOpenMyNotification}><FaRegBell /></Button>
                             <Menu
-                                anchorEl={isOpenMyNotification}
-                                className='myNotification dropdown-list'
-                                id="notification-menu"
-                                open={openNatification}
-                                onClose={handleCloseMyNotification}
-                                onClick={handleCloseMyNotification}
-                                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                            >
-                                {/* محتوى الإشعارات */}
-                            </Menu>
-                        </div>
+                                            anchorEl={isOpenMyNotification}
+                                            className='myNotification dropdown-list'
+                                            id="notification-menu"
+                                            open={openNatification}
+                                            onClose={handleCloseMyNotification}
+                                            onClick={handleCloseMyNotification}
+                                            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                                            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                        >
+                                            <div className='head pl-3 pb-0'>
+                                                <h4>Order (12)</h4>
+                                            </div>
+                                            <Divider className='mb-1' />
+
+                                            <div className='Scroll'>
+                                                <MenuItem onClick={handleCloseMyNotification}>
+                                                    <div className="d-flex ">
+
+                                                        <div>
+                                                            <div className="userImg">
+                                                                <span className='rounded-circle'>
+                                                                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="user" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="userInfo">
+                                                            <h4>
+                                                                <span>
+                                                                    <b>Mahmudul </b>
+                                                                    added to his favorite list
+                                                                    <b> Leather belt steve madden</b>
+                                                                </span>
+                                                            </h4>
+                                                            <p className='text-sky mb-0'>few seconds ago</p>
+                                                        </div>
+                                                        <div className='dotList d-flex'>
+                                                            <HiOutlineDotsVertical />
+                                                        </div>
+                                                    </div>
+                                                
+                                                </MenuItem>
+
+                                                <MenuItem onClick={handleCloseMyNotification}>
+                                                    <div className="d-flex ">
+
+                                                        <div>
+                                                            <div className="userImg">
+                                                                <span className='rounded-circle'>
+                                                                    <img src="	https://mironcoder-hotash.netlify.app/images/avatar/01.webp" alt="user" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="userInfo">
+                                                            <h4>
+                                                                <span>
+                                                                    <b>Mahmudul </b>
+                                                                    added to his favorite list
+                                                                    <b> Leather belt steve madden</b>
+                                                                </span>
+                                                            </h4>
+                                                            <p className='text-sky mb-0'>few seconds ago</p>
+                                                        </div>
+                                                        <div className='dotList d-flex'>
+                                                            <HiOutlineDotsVertical />
+                                                        </div>
+
+                                                    </div>
+                                                
+                                                </MenuItem>
+
+                                                <MenuItem onClick={handleCloseMyNotification}>
+                                                    <div className="d-flex ">
+
+                                                        <div>
+                                                            <div className="userImg">
+                                                                <span className='rounded-circle'>
+                                                                    <img src="https://plus.unsplash.com/premium_photo-1729017566977-c1670d157362?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0Nnx8fGVufDB8fHx8fA%3D%3D" alt="user" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="userInfo">
+                                                            <h4>
+                                                                <span>
+                                                                    <b>Mahmudul </b>
+                                                                    added to his favorite list
+                                                                    <b> Leather belt steve madden</b>
+                                                                </span>
+                                                            </h4>
+                                                            <p className='text-sky mb-0'>few seconds ago</p>
+                                                        </div>
+                                                        <div className='dotList d-flex'>
+                                                            <HiOutlineDotsVertical />
+                                                        </div>
+
+                                                    </div>
+                                                
+                                                </MenuItem>
+
+                                                <MenuItem onClick={handleCloseMyNotification}>
+                                                    <div className="d-flex ">
+
+                                                        <div>
+                                                            <div className="userImg">
+                                                                <span className='rounded-circle'>
+                                                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8QXZhdGFyfGVufDB8fDB8fHww" alt="user" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="userInfo">
+                                                            <h4>
+                                                                <span>
+                                                                    <b>Mahmudul </b>
+                                                                    added to his favorite list
+                                                                    <b> Leather belt steve madden</b>
+                                                                </span>
+                                                            </h4>
+                                                            <p className='text-sky mb-0'>few seconds ago</p>
+                                                        </div>
+                                                        <div className='dotList d-flex'>
+                                                            <HiOutlineDotsVertical />
+                                                        </div>
+
+                                                    </div>
+                                                
+                                                </MenuItem>
+
+                                                <MenuItem onClick={handleCloseMyNotification}>
+                                                    <div className="d-flex ">
+
+                                                        <div>
+                                                            <div className="userImg">
+                                                                <span className='rounded-circle'>
+                                                                    <img src="https://plus.unsplash.com/premium_photo-1658527049634-15142565537a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QXZhdGFyfGVufDB8fDB8fHww" alt="user" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="userInfo">
+                                                            <h4>
+                                                                <span>
+                                                                    <b>Mahmudul </b>
+                                                                    added to his favorite list
+                                                                    <b> Leather belt steve madden</b>
+                                                                </span>
+                                                            </h4>
+                                                            <p className='text-sky mb-0'>few seconds ago</p>
+                                                        </div>
+                                                        <div className='dotList d-flex'>
+                                                            <HiOutlineDotsVertical />
+                                                        </div>
+
+                                                    </div>
+                                                
+                                                </MenuItem>
+
+                                                <MenuItem onClick={handleCloseMyNotification}>
+                                                    <div className="d-flex ">
+
+                                                        <div>
+                                                            <div className="userImg">
+                                                                <span className='rounded-circle'>
+                                                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8QXZhdGFyfGVufDB8fDB8fHww" alt="user" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="userInfo">
+                                                            <h4>
+                                                                <span>
+                                                                    <b>Mahmudul </b>
+                                                                    added to his favorite list
+                                                                    <b> Leather belt steve madden</b>
+                                                                </span>
+                                                            </h4>
+                                                            <p className='text-sky mb-0'>few seconds ago</p>
+                                                        </div>
+                                                        <div className='dotList d-flex'>
+                                                            <HiOutlineDotsVertical />
+                                                        </div>
+
+                                                    </div>
+                                                
+                                                </MenuItem>
+
+                                                <MenuItem onClick={handleCloseMyNotification}>
+                                                    <div className="d-flex ">
+
+                                                        <div>
+                                                            <div className="userImg">
+                                                                <span className='rounded-circle'>
+                                                                    <img src="https://plus.unsplash.com/premium_photo-1670884441012-c5cf195c062a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fEF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D" alt="user" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="userInfo">
+                                                            <h4>
+                                                                <span>
+                                                                    <b>Mahmudul </b>
+                                                                    added to his favorite list
+                                                                    <b> Leather belt steve madden</b>
+                                                                </span>
+                                                            </h4>
+                                                            <p className='text-sky mb-0'>few seconds ago</p>
+                                                        </div>
+                                                        <div className='dotList d-flex'>
+                                                            <HiOutlineDotsVertical />
+                                                        </div>
+
+                                                    </div>
+                                                
+                                                </MenuItem>
+                                            </div>
+
+                                            <div className='pl-3 pr-3 w-100 pt-2 pb-1'>
+                                                <Button className='btn-blue w-100' >View All Notifications</Button>
+                                            </div>
+
+
+                        </Menu>                        </div>
 
                         <div className='myAccWrapper '>
                             <Button className="myAcc d-flex align-items-center" onClick={handleOpenMyAccDr}>

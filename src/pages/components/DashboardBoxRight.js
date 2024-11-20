@@ -1,7 +1,7 @@
 import React from 'react'
 
 const DashboardBoxRight = (props) => {
-  return (
+return (
     <div className='dashboardBoxRight'style={{
         backgroundImage: `linear-gradient(to right, ${props.color?.[0]}, ${props.color?.[1]})`
     }}>
@@ -28,7 +28,7 @@ const DashboardBoxRight = (props) => {
                 </div>
 
     </div>
-  )
+)
 }
 
 export default DashboardBoxRight
