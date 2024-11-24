@@ -140,8 +140,8 @@ function App() {
                 isLoggedIn ? (
                   <ProductList
                     products={products}
-                    onEditProduct={editProduct} // تصحيح التمرير
-                    onDeleteProduct={deleteProduct} // تصحيح التمرير
+                    onEditProduct={editProduct} // 
+                    onDeleteProduct={deleteProduct} // 
                   />
                 ) : (
                   <Navigate to="/" />
