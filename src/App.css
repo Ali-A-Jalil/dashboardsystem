@@ -1667,81 +1667,375 @@ img:hover {
   margin-top: 20px;
 }
 
-.product-details-container {
+.product-details-wrapper {
   display: flex;
-  gap: 2rem;
-  margin: 2rem;
-  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.product-details-page {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f1f1f1;
+  overflow-y: auto;
+  margin-top: 70px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
 }
 
 .product-details-left {
-  flex: 1;
+  float: left;
+  width: 40%;
+  padding-right: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .main-image img {
-  width: 100%;
-  max-width: 400px;
+  width: 250px;
   height: auto;
-  border: 2px solid #ccc;
   border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.main-image img:hover {
+  transform: scale(1.05);
 }
 
 .thumbnails {
   display: flex;
+  justify-content: center;
   gap: 10px;
-  margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .thumbnails img {
-  width: 70px;
-  height: 70px;
+  width: 150px;
+  height: 150px;
+  margin: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  object-fit: cover;
-  transition: transform 0.3s, border-color 0.3s;
+  border: 2px solid transparent;
+  transition: transform 0.3s, border 0.3s;
 }
 
-.thumbnails img.active-thumbnail {
+.thumbnails img:hover {
+  transform: scale(1.1);
+  border-color: #007bff;
+}
+
+.active-thumbnail {
   border-color: #007bff;
   transform: scale(1.1);
 }
 
 .product-details-right {
-  flex: 1;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  float: right;
+  width: 55%;
+  padding-left: 20px;
 }
 
 .product-details-right h2 {
-  margin-bottom: 1rem;
+  font-size: 28px;
+  margin-bottom: 15px;
   color: #333;
+  font-weight: 700;
 }
 
 .product-details-right p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  line-height: 1.5;
+  margin: 10px 0;
+  line-height: 1.8;
+  font-size: 16px;
   color: #555;
+}
+
+.product-details-right p strong {
+  color: #007bff;
 }
 
 .social-icons {
   display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.social-icons button {
-  color: #555;
-  font-size: 1.5rem;
-  transition: color 0.3s;
+.social-icons .social-btn {
+  margin: 0;
+  font-size: 28px;
+  color: #6c757d;
+  transition: color 0.3s, transform 0.3s;
 }
 
-.social-icons button:hover {
+.social-icons .social-btn:hover {
   color: #007bff;
+  transform: scale(1.3);
+}
+
+.loading,
+.error,
+.no-product {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin: 20px 0;
+}
+
+
+.add-to-cart-section {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-to-cart-btn {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #0056b3;
+  transform: scale(.9);
+  -webkit-transform: scale(.9);
+  -moz-transform: scale(.9);
+  -ms-transform: scale(.9);
+  -o-transform: scale(.9);
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.quantity-btn {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 50%;
+  border: none;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.quantity-btn:active {
+  transform: scale(0.95);
+}
+
+.quantity-btn .fa-plus:hover {
+  transform: scale(1.1);
+  color: #28a745;
+  background-color: rgba(0, 0, 0, 0.05);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+.quantity-btn .fa-minus:hover {
+  transform: scale(0.7);
+  color: #dc3545;
+  background-color: rgba(0, 0, 0, 0.05);
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  -o-transform: scale(0.7);
+}
+
+.quantity-btn .fa-plus {
+  color: #6fec8c; /* Success green */
+}
+
+.quantity-btn .fa-minus {
+  color: #dc3545; /* Danger red */
+}
+
+.quantity-display {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 15px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  color: #495057;
+  width: 50px;
+  text-align: center;
+}
+
+
+/* expense Manager */
+
+.expense-manager {
+  width: 90%;
+  max-width: 1200px;
+  margin: 70px auto;
+  font-family: Arial, sans-serif;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.stats div {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.action-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.add-expense-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.csv-download-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.filter-btn {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.expense-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.expense-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.expense-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+}
+
+.filter-section input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.expense-table {
+  margin-top: 20px;
+}
+
+.expense-table h2 {
+  margin-bottom: 10px;
+}
+
+.expense-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.expense-table th,
+.expense-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  color: #000;
+}
+
+.expense-table th {
+  background-color: #f9f9f9;
+}
+
+.expense-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.expense-table button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.rowDaily{
+  margin: 90px auto;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+}
+
+.rowMonthly{
+  margin: 40px auto;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+}
+
+
+/* Recurring Expense */
+
+.recurring-expense-manager {
+  padding: 20px;
+  margin: 70px auto;
+}
+
+.header-section h1 {
+  font-size: 24px;
+}
+
+.summary-boxes .summary-box {
+  border-radius: 8px;
+  text-align: center;
+}
+
+.action-buttons button {
+  border-radius: 6px;
+}
+
+table th, table td {
+  text-align: center;
+  vertical-align: middle;
 }

@@ -44,10 +44,10 @@ const Sidebar = ({ isSidebarOpen }) => {
           </Button>
           <div className={`sub-menuWrapper ${activeTab === 0 && isToggleSubmenu ? 'colapse' : 'colapsed'}`}>
             <ul className='sub-menu'>
-              <li><Link to='/daily'>Daily Dashboard</Link></li>
-              <li><Link to='/'>Monthly Dashboard</Link></li>
-              <li><Link to='/'>Chart Dashboard</Link></li>
-              <li><Link to='/'>Forecasts</Link></li>
+              <li><Link to='/dailydashboard'>Daily Dashboard</Link></li>
+              <li><Link to='/monthlydashboard'>Monthly Dashboard</Link></li>
+              <li><Link to='/chartdashboard'>Chart Dashboard</Link></li>
+              <li><Link to='/forecasts'>Forecasts</Link></li>
               <li><Link to='/'>Product Sales Overview</Link></li>
             </ul>
           </div>
@@ -64,8 +64,8 @@ const Sidebar = ({ isSidebarOpen }) => {
           <div className={`sub-menuWrapper ${activeTab === 1 && isToggleSubmenu ? 'colapse' : 'colapsed'}`}>
             <ul className='sub-menu'>
               <li><Link to='/product-list'>Product List</Link></li>
-              <li><Link to='/'>Product View</Link></li>
-              <li><Link to='/'>Create Product</Link></li>
+              <li><Link to="/product-details/123">Product View</Link></li>
+              <li><Link to='/add-product'>Create Product</Link></li>
             </ul>
           </div>
         </li>
@@ -131,9 +131,9 @@ const Sidebar = ({ isSidebarOpen }) => {
           </Button>
           <div className={`sub-menuWrapper ${activeTab === 5 && isToggleSubmenu ? 'colapse' : 'colapsed'}`}>
             <ul className='sub-menu'>
-              <li><Link to='/'>Expense</Link></li>
-              <li><Link to='/'>Recurring Expense</Link></li>
-              <li><Link to='/'>Invoices</Link></li>
+              <li><Link to='/expense-manager'>Expense</Link></li>
+              <li><Link to='/recurring-expense'>Recurring Expense</Link></li>
+              <li><Link to='/invoices-list'>Invoices</Link></li>
               <li><Link to='/'>Refund</Link></li>
             </ul>
           </div>

@@ -1,4 +1,22 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import DailyDashboard from './pages/placeholders/DailyDashboard';
+import MonthlyDashboard from './pages/placeholders/MonthlyDashboard';
+import ChartDashboard from './pages/placeholders/ChartDashboard';
+import Forecasts from './pages/placeholders/Forecasts';
+import ProductView from './pages/placeholders/ProductView';
+import OrderList from './pages/placeholders/OrderList';
+import NewMessages from './pages/placeholders/NewMessages';
+import OldMessages from './pages/placeholders/OldMessages';
+import TodayReminders from './pages/placeholders/TodayReminders';
+import UpcomingReminders from './pages/placeholders/UpcomingReminders';
+import InvoicesList from './pages/placeholders/InvoicesList';
+import CreateInvoice from './pages/placeholders/CreateInvoice';
+import Employee from './pages/placeholders/Employee';
+import Payroll from './pages/placeholders/Payroll';
+import Calendar from './pages/placeholders/Calendar';
+import Task from './pages/placeholders/Task';
+import ExpenseManager from './components/ExpenseManager/ExpenseManager'; // Import ExpenseManager
+import RecurringExpenseManager from "./components/RecurringExpenseManager/RecurringExpenseManager"; // Import the component
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { useState } from 'react';
@@ -15,17 +33,32 @@ import AddProduct from './components/AddProduct/AddProduct';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 
 function App() {
+  const fetchProductById = async (id) => {
+    return {
+      id,
+      name: "Sample Product",
+      manufacturer: "Sample Manufacturer",
+      stock: 100,
+      unitsSold: 50,
+      unitsReturned: 5,
+      price: 20,
+      defectiveUnits: 2,
+      images: ["https://via.placeholder.com/150", "https://via.placeholder.com/100"],
+      details: "This is a sample product description.",
+      facebook: "https://facebook.com",
+      instagram: "https://instagram.com",
+      website: "https://example.com",
+    };
+  };
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [loggedInUser, setLoggedInUser] = useState(null);
 
-  // إدارة المنتجات
+  // Products Management
   const [products, setProducts] = useState([]);
-
-  // إدارة الفواتير
   const [invoices, setInvoices] = useState([]);
 
-  // تسجيل الدخول والخروج
   const handleLogin = (user) => {
     setLoggedInUser(user);
     setIsLoggedIn(true);
@@ -36,7 +69,6 @@ function App() {
     setLoggedInUser(null);
   };
 
-  // إدارة المنتجات
   const addProduct = (product) => {
     setProducts((prev) => [...prev, { ...product, id: Date.now() }]);
   };
@@ -51,7 +83,6 @@ function App() {
     setProducts((prev) => prev.filter((product) => product.id !== id));
   };
 
-  // إدارة الفواتير
   const addInvoice = (invoice) => {
     setInvoices((prev) => [...prev, { ...invoice, id: Date.now() }]);
   };
@@ -140,8 +171,8 @@ function App() {
                 isLoggedIn ? (
                   <ProductList
                     products={products}
-                    onEditProduct={editProduct} // 
-                    onDeleteProduct={deleteProduct} // 
+                    onEditProduct={editProduct}
+                    onDeleteProduct={deleteProduct}
                   />
                 ) : (
                   <Navigate to="/" />
@@ -156,6 +187,31 @@ function App() {
               path="/view-product/:productId"
               element={isLoggedIn ? <ProductDetails products={products} /> : <Navigate to="/" />}
             />
+            <Route
+              path="/product-details/:productId"
+              element={<ProductDetails fetchProductById={fetchProductById} />}
+            />
+            <Route path="/expense-manager" element={<ExpenseManager />} /> {/* Expense Manager Route */}
+            <Route
+              path="/recurring-expense"
+              element={<RecurringExpenseManager />} // Navigate to Recurring Expense Manager
+            />
+            <Route path="/dailydashboard" element={<DailyDashboard />} />
+            <Route path="/monthlydashboard" element={<MonthlyDashboard />} />
+            <Route path="/chartdashboard" element={<ChartDashboard />} />
+            <Route path="/forecasts" element={<Forecasts />} />
+            <Route path="/productview" element={<ProductView />} />
+            <Route path="/orderlist" element={<OrderList />} />
+            <Route path="/newmessages" element={<NewMessages />} />
+            <Route path="/oldmessages" element={<OldMessages />} />
+            <Route path="/todayreminders" element={<TodayReminders />} />
+            <Route path="/upcomingreminders" element={<UpcomingReminders />} />
+            <Route path="/invoiceslist" element={<InvoicesList />} />
+            <Route path="/createinvoice" element={<CreateInvoice />} />
+            <Route path="/employee" element={<Employee />} />
+            <Route path="/payroll" element={<Payroll />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/task" element={<Task />} />
           </Routes>
         </div>
       </div>

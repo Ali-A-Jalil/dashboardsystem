@@ -18,13 +18,13 @@ const AddProduct = ({ onAddProduct }) => {
   const handleAddProductSubmit = (e) => {
     e.preventDefault();
 
-    // **التحقق من صحة الإدخال**
+    // **Make sure all required fields are filled correctly***
     if (!newProduct.name || newProduct.price <= 0 || newProduct.tax < 0 || !newProduct.manufacturer) {
       setError('Please fill in all required fields correctly.');
       return;
     }
 
-    // **حساب التفاصيل**
+    // ** Define the tax amount and total price **
     const newCode = `P${Date.now().toString().slice(-5)}`;
     const taxAmount = (newProduct.price * newProduct.tax) / 100;
     const totalPrice = newProduct.price + taxAmount;
@@ -73,10 +73,11 @@ const AddProduct = ({ onAddProduct }) => {
       <h2>Add New Product</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       <Form onSubmit={handleAddProductSubmit}>
-        {/* **إضافة صور المنتج** */}
+        {/**Add Product Images ** */}
         <Form.Group controlId="productImages">
           <Form.Label>Product Images</Form.Label>
           <Form.Control
+
             type="file"
             multiple
             accept="image/*"
@@ -94,7 +95,7 @@ const AddProduct = ({ onAddProduct }) => {
           </div>
         </Form.Group>
 
-        {/* **إدخال اسم المنتج** */}
+        {/* *  Add Product Name*/}
         <Form.Group controlId="productName">
           <Form.Label>Product Name</Form.Label>
           <Form.Control
@@ -106,7 +107,7 @@ const AddProduct = ({ onAddProduct }) => {
           />
         </Form.Group>
 
-        {/* **إدخال السعر** */}
+        {/* ** Add Price** */}
         <Form.Group controlId="productPrice">
           <Form.Label>Price</Form.Label>
           <Form.Control
@@ -119,7 +120,7 @@ const AddProduct = ({ onAddProduct }) => {
           />
         </Form.Group>
 
-        {/* **إدخال الضريبة** */}
+        {/* ** Add Tax** */}
         <Form.Group controlId="productTax">
           <Form.Label>Tax (%)</Form.Label>
           <Form.Control
@@ -132,7 +133,7 @@ const AddProduct = ({ onAddProduct }) => {
           />
         </Form.Group>
 
-        {/* **اسم الشركة المصنعة** */}
+        {/* ** Add Manufacturer Company ** */}
         <Form.Group controlId="manufacturerName">
           <Form.Label>Manufacturer</Form.Label>
           <Form.Control
@@ -148,7 +149,7 @@ const AddProduct = ({ onAddProduct }) => {
           </Form.Control>
         </Form.Group>
 
-        {/* **إدخال المخزون** */}
+        {/* ** Add Stock** */}
         <Form.Group controlId="unitsInStock">
           <Form.Label>Units in Stock</Form.Label>
           <Form.Control
@@ -161,9 +162,9 @@ const AddProduct = ({ onAddProduct }) => {
           />
         </Form.Group>
 
-        {/* **الأزرار** */}
+        {/* ** Buttons** */}
         <div className="form-actions">
-          <Button variant="success" type="submit">
+          <Button className='mb-3' variant="success" type="submit">
             Add Product
           </Button>
           <Button variant="secondary" onClick={resetForm} className="ms-2">
