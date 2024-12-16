@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button} from "@mui/material";
+import { Button } from "@mui/material";
 import { FaFilter } from "react-icons/fa";
 import { IoIosDownload } from "react-icons/io";
 import { useLocation } from "react-router-dom";
@@ -10,29 +10,35 @@ import FilterModal from "../FilterModal/FilterModal";
 const Refund = () => {
   const location = useLocation();
 
-  // الحالة العامة
+  // General State
   const [refunds, setRefunds] = useState([]);
   const [selectedActionId, setSelectedActionId] = useState(null);
   const [filterModalOpen, setFilterModalOpen] = useState(false);
   const [filterValues, setFilterValues] = useState(initialFilterState);
 
-  // الإجماليات
+  // Totals
   const [totalRefunds, setTotalRefunds] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
 
-  // عند استقبال فاتورة جديدة
+  // Get Refunds
   useEffect(() => {
     if (location.state?.invoice) {
       const newRefund = createRefundEntry(location.state.invoice);
-      setRefunds((prev) =>
-        prev.some((r) => r.id === newRefund.id) ? prev : [...prev, newRefund]
-      );
+
+      setRefunds((prev) => {
+        // Check if the new refund already exists
+        const exists = prev.some((refund) => refund.id === newRefund.id);
+        return exists ? prev : [...prev, newRefund]; // If not, add it
+      });
     }
-  }, [location.state]);
+  }, [location.state]); // Only run this effect when the invoice prop changes
 
-  // تحديث الإجماليات
-  useEffect(() => calculateTotals(refunds), [refunds]);
+  // Calculate totals for refunds
+  useEffect(() => {
+    calculateTotals(refunds);
+  }, [refunds]);
 
+  // Create Refund
   const createRefundEntry = (invoice) => ({
     id: invoice.id,
     customer: invoice.customerName,
@@ -43,14 +49,13 @@ const Refund = () => {
     refundReason: "N/A",
   });
 
+  // totals functions
   const calculateTotals = (data) => {
     setTotalRefunds(data.length);
     setTotalAmount(data.reduce((sum, refund) => sum + refund.amount, 0));
   };
 
-  const toggleActionMenu = (id) =>
-    setSelectedActionId(selectedActionId === id ? null : id);
-
+  // Delete Refund
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this refund?")) {
       setRefunds((prev) => prev.filter((refund) => refund.id !== id));
@@ -59,7 +64,7 @@ const Refund = () => {
 
   return (
     <div className="refund-container">
-      {/* الأزرار */}
+      {/*  master actions */}
       <div className="actions mb-3 d-flex">
         <Button variant="contained" onClick={() => setFilterModalOpen(true)}>
           <FaFilter /> Filter
@@ -69,13 +74,13 @@ const Refund = () => {
         </Button>
       </div>
 
-      {/* المعلومات الإجمالية */}
+      {/* totals */}
       <div className="summary d-flex justify-content-between mb-3">
         <InfoBox title="Refund" value={totalRefunds} />
         <InfoBox title="Amount" value={totalAmount.toLocaleString()} />
       </div>
 
-      {/* الجدول */}
+      {/* table Refund */}
       <div className="table-wrapper">
         <h2>Refund List</h2>
         <table className="table table-striped">
@@ -100,7 +105,10 @@ const Refund = () => {
                 <td>{refund.createdBy}</td>
                 <td>{refund.createdAt}</td>
                 <td>
-                  <Button size="small" onClick={() => toggleActionMenu(refund.id)}>
+                  <Button
+                    size="small"
+                    onClick={() => setSelectedActionId(refund.id)}
+                  >
                     Action
                   </Button>
                   {selectedActionId === refund.id && (
@@ -116,7 +124,7 @@ const Refund = () => {
         </table>
       </div>
 
-      {/* مودال الفلترة */}
+      {/* filter modal */}
       <FilterModal
         open={filterModalOpen}
         onClose={() => setFilterModalOpen(false)}
@@ -129,7 +137,7 @@ const Refund = () => {
   );
 };
 
-// القيم الابتدائية للفلترة
+// initial filter state
 const initialFilterState = {
   refundReason: "",
   amount: "",

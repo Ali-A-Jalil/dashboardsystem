@@ -65,7 +65,7 @@ const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
                 <td>{invoice.quantity}</td>
                 <td>{invoice.price}</td>
                 <td>{invoice.amountPaid}</td>
-                <td>{invoice.price * invoice.quantity - invoice.amountPaid}</td>
+                <td>{invoice.price * invoice.quantity + invoice.deliveryFee - invoice.amountPaid}</td>
                 <td>
                   <button className="action-btn" onClick={() => toggleActionMenu(invoice.id)}>
                     Action
@@ -76,7 +76,7 @@ const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
                       <li onClick={() => handleDelete(invoice.id)}>Delete</li>
                       <li onClick={() => handlePrint(invoice)}>Print</li>
                       <li onClick={() => openPaymentModal(invoice)}>Rest of Payment</li>
-                      <li onClick={() => navigate('/refund', { state: { invoice } })}>Refund</li>
+                      <li onClick={() => navigate('/refund', { state: {invoice } })}>Refund</li>
                     </ul>
                   )}
                 </td>
@@ -99,7 +99,7 @@ const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
             </p>
             <p>
               <strong>Remaining Balance:</strong>{' '}
-              ${paymentDetails.price * paymentDetails.quantity - paymentDetails.amountPaid}
+              ${paymentDetails.price * paymentDetails.quantity + paymentDetails.deliveryFee - paymentDetails.amountPaid}
             </p>
             <div className="input-group">
               <label htmlFor="amountToPay">Enter Amount to Pay:</label>
