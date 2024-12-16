@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
   const [actionInvoice, setActionInvoice] = useState(null);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [paymentDetails, setPaymentDetails] = useState({});
+  const [amountToPay, setAmountToPay] = useState(''); // مبلغ يتم إدخاله
   const navigate = useNavigate();
 
   const handleDelete = (id) => {
@@ -17,22 +19,26 @@ const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
   const handlePrint = (invoice) => navigate('/print-invoice', { state: { invoice } });
 
   const toggleActionMenu = (id) => setActionInvoice(actionInvoice === id ? null : id);
+
   const openPaymentModal = (invoice) => {
     setPaymentDetails(invoice);
+    setAmountToPay(''); // إعادة تعيين القيمة
     setShowPaymentModal(true);
   };
 
-  const handlePayment = () => {
-    continuePayment(paymentDetails);
+  const handleSavePayment = () => {
+    const updatedAmountPaid = parseFloat(paymentDetails.amountPaid) + parseFloat(amountToPay || 0);
+    const updatedInvoice = { ...paymentDetails, amountPaid: updatedAmountPaid };
+
+    continuePayment(paymentDetails.id, updatedAmountPaid);
     setShowPaymentModal(false);
+    setPaymentDetails({});
   };
 
   return (
     <div className="invoice-list">
       <h2>Invoice List</h2>
-      {invoices.length === 0 ? ( // No invoices
-        <p>No invoices available.</p>
-      ) : (
+      <div className="content-section">
         <table className="invoice-table">
           <thead className="table-header">
             <tr>
@@ -45,10 +51,6 @@ const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
               <th>Price</th>
               <th>Amount Paid</th>
               <th>Remaining Balance</th>
-              <th>Tax</th>
-              <th>Delivery</th>
-              <th>Date</th>
-              <th>Notes</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -63,11 +65,7 @@ const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
                 <td>{invoice.quantity}</td>
                 <td>{invoice.price}</td>
                 <td>{invoice.amountPaid}</td>
-                <td>{invoice.remainingBalance}</td>
-                <td>{invoice.tax}</td>
-                <td>{invoice.deliveryFee}</td>
-                <td>{invoice.createdAt}</td>
-                <td>{invoice.notes}</td>
+                <td>{invoice.price * invoice.quantity - invoice.amountPaid}</td>
                 <td>
                   <button className="action-btn" onClick={() => toggleActionMenu(invoice.id)}>
                     Action
@@ -77,9 +75,8 @@ const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
                       <li onClick={() => handleEdit(invoice)}>Edit</li>
                       <li onClick={() => handleDelete(invoice.id)}>Delete</li>
                       <li onClick={() => handlePrint(invoice)}>Print</li>
-                      {invoice.remainingBalance > 0 && (
-                        <li onClick={() => openPaymentModal(invoice)}>Rest of Payment</li>
-                      )}
+                      <li onClick={() => openPaymentModal(invoice)}>Rest of Payment</li>
+                      <li onClick={() => navigate('/refund', { state: { invoice } })}>Refund</li>
                     </ul>
                   )}
                 </td>
@@ -87,24 +84,41 @@ const InvoiceList = ({ invoices, deleteInvoice, continuePayment }) => {
             ))}
           </tbody>
         </table>
-      )}
+      </div>
 
+      {/* Modal for Rest of Payment */}
       {showPaymentModal && (
-        <div className="modal">
+        <div className="modal-overlay">
           <div className="modal-content">
             <h3>Rest of Payment</h3>
-            <p>Product Name: {paymentDetails.productName}</p>
-            <p>Price: {paymentDetails.price}</p>
-            <p>Amount Paid: {paymentDetails.amountPaid}</p>
-            <input
-              type="number"
-              placeholder="Enter remaining amount"
-              onChange={(e) =>
-                setPaymentDetails({ ...paymentDetails, newAmount: parseFloat(e.target.value || 0) })
-              }
-            />
-            <button onClick={handlePayment}>Submit Payment</button>
-            <button onClick={() => setShowPaymentModal(false)}>Close</button>
+            <p>
+              <strong>Paid Amount:</strong> ${paymentDetails.amountPaid}
+            </p>
+            <p>
+              <strong>Total Price:</strong> ${paymentDetails.price * paymentDetails.quantity}
+            </p>
+            <p>
+              <strong>Remaining Balance:</strong>{' '}
+              ${paymentDetails.price * paymentDetails.quantity - paymentDetails.amountPaid}
+            </p>
+            <div className="input-group">
+              <label htmlFor="amountToPay">Enter Amount to Pay:</label>
+              <input
+                type="number"
+                id="amountToPay"
+                placeholder="Amount to pay"
+                value={amountToPay}
+                onChange={(e) => setAmountToPay(e.target.value)}
+              />
+            </div>
+            <div className="modal-buttons">
+              <button className="save-btn" onClick={handleSavePayment}>
+                Save
+              </button>
+              <button className="close-btn" onClick={() => setShowPaymentModal(false)}>
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

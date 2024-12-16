@@ -1,12 +1,54 @@
 import React from 'react';
+import { Bar, Line } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend , ArcElement } from 'chart.js';
 
-const ChartDashboard = () => {
-    return (
-        <div>
-            <h1>ChartDashboard</h1>
-            <p>This is a placeholder for the ChartDashboard page.</p>
-        </div>
-    );
-}
+ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend, ArcElement);
 
-export default ChartDashboard;
+const DashboardChart = ({ dailyData, monthlyData, chartType = 'bar' }) => {
+  const data = {
+    labels: ['New Users', 'Orders', 'Invoices', 'Sales', 'Refunds', 'Expenses', 'Deposits', 'Total'],
+    datasets: [
+      {
+        label: 'Daily Data',
+        data: dailyData,
+        borderColor: '#4CAF50',
+        backgroundColor: 'rgba(76, 175, 80, 0.6)',
+        borderWidth: 1,
+      },
+      {
+        label: 'Monthly Data',
+        data: monthlyData,
+        borderColor: '#2196F3',
+        backgroundColor: 'rgba(33, 150, 243, 0.6)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Daily vs Monthly Data',
+      },
+    },
+    maintainAspectRatio: false,
+    backgroundColor: 'white', // Set the background color here
+  };
+
+  return (
+    <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', margin: '100px 20px'}}>
+      {chartType === 'bar' ? (
+        <Bar data={data} options={options} />
+      ) : (
+        <Line data={data} options={options} />
+      )}
+    </div>
+  );
+};
+
+export default DashboardChart;

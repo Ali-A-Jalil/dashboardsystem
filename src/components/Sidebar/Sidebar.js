@@ -134,7 +134,7 @@ const Sidebar = ({ isSidebarOpen }) => {
               <li><Link to='/expense-manager'>Expense</Link></li>
               <li><Link to='/recurring-expense'>Recurring Expense</Link></li>
               <li><Link to='/invoices-list'>Invoices</Link></li>
-              <li><Link to='/'>Refund</Link></li>
+              <li><Link to='/refund'>Refund</Link></li>
             </ul>
           </div>
         </li>

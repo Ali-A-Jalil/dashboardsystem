@@ -31,7 +31,7 @@ import InvoicePrint from './components/InvoicePrint/InvoicePrint';
 import ProductList from './components/ProductList/ProductList';
 import AddProduct from './components/AddProduct/AddProduct';
 import ProductDetails from './components/ProductDetails/ProductDetails';
-
+import Refund from './components/Refund/Refund';
 function App() {
   const fetchProductById = async (id) => {
     return {
@@ -196,6 +196,7 @@ function App() {
               path="/recurring-expense"
               element={<RecurringExpenseManager />} // Navigate to Recurring Expense Manager
             />
+            <Route path="/refund" element={<Refund invoices={invoices} />} />
             <Route path="/dailydashboard" element={<DailyDashboard />} />
             <Route path="/monthlydashboard" element={<MonthlyDashboard />} />
             <Route path="/chartdashboard" element={<ChartDashboard />} />
